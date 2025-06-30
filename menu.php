@@ -49,7 +49,8 @@ $result = $stmt->get_result();
     <?php endwhile; ?>
   </div>
 </main>
-
+<!-- FOOTER -->
+<?php include 'footer.php'; ?>
 <!-- Modal -->
 <div id="modal" class="modal">
   <div class="modal-content">

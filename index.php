@@ -1,6 +1,7 @@
 <?php
 include 'db.php';
 include 'header.php';
+include 'modalwindow.php';  // Include modal window structure
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,11 +13,11 @@ include 'header.php';
   <!-- CSS -->
   <link rel="stylesheet" href="./style/index.css" />
   <link rel="stylesheet" href="./style/about-section.css" />
+  <link rel="stylesheet" href="./style/modalwindow.css" />
   <link rel="stylesheet" href="https://unpkg.com/swiper@11/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <!-- logo -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 <body>
@@ -38,10 +39,11 @@ include 'header.php';
   <h2>Today's Highlights</h2>
   <div class="product-list">
     <?php
-    $result = $conn->query("SELECT name, description, price, image FROM menu_items ORDER BY date_added DESC LIMIT 9");
+    // Fetch products including recipe_or_story
+    $result = $conn->query("SELECT name, description, price, image, recipe_or_story FROM menu_items ORDER BY date_added DESC LIMIT 9");
     while ($row = $result->fetch_assoc()):
     ?>
-      <div class="product-card" data-aos="fade-up">
+      <div class="product-card" data-aos="fade-up" onclick="openModal(`<?= addslashes($row['name']) ?>`, `<?= addslashes($row['description']) ?>`, `<?= addslashes($row['image']) ?>`, `<?= addslashes($row['recipe_or_story']) ?>`)">
         <h3><?= htmlspecialchars($row['name']) ?> – £<?= number_format($row['price'], 2) ?></h3>
         <p><?= htmlspecialchars($row['description']) ?></p>
         <?php if (!empty($row['image'])): ?>
@@ -83,29 +85,28 @@ include 'header.php';
 <section class="about-wrapper">
   <div class="background-video">
     <video autoplay muted loop playsinline>
-      <source src="./img/video2.mp4" type="video/mp4">
+      <source src="./img/video2.1.mp4" type="video/mp4">
     </video>
   </div>
 
   <section class="about-section">
     <div class="container">
-      <h2>About Sweet Treats</h2>
+      <h2 data-aos="fade-right"> About Sweet Treats</h2>
       <div class="about-content">
         <div class="about-text" data-aos="fade-right">
-   <p>At Sweet Treats, we believe that every dessert tells a story. From buttery croissants to rich chocolate cakes, our baked goods are crafted daily with care, tradition, and a sprinkle of magic.</p>
-<p>Join us in savoring the sweet side of life. Whether you're treating yourself or sharing with loved ones, there's always a reason to celebrate with Sweet Treats!</p>
+     <p>At Sweet Treats, we believe that every dessert tells a story, a journey that begins with the finest ingredients and ends with a smile on your face. From the first bite to the last, our creations are designed to transport you into a world of flavor, where every mouthful is a celebration of craftsmanship and passion. Each dessert is made with love, care, and an unwavering commitment to quality. Our chefs are dedicated to turning simple ingredients into extraordinary experiences, whether it's a rich chocolate cake, a buttery pastry, or a refreshing fruit tart. We don't just bake sweets, we create memories, moments to be cherished and shared with friends and family.</p>
+
+<p>Join us in savoring the sweet side of life! Let our desserts be a part of your daily routine or your special occasions, bringing warmth and joy to your day. Whether you’re indulging in a moment of self-care or celebrating with loved ones, Sweet Treats is here to add a touch of magic to every occasion. Treat yourself to the happiness that comes with a perfectly crafted dessert, because at Sweet Treats, every bite is more than just food – it's a little piece of joy.</p>
 
           <div class="social-links">
-         <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-<a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
-<a href="#"><i class="fab fa-twitter"></i> Twitter</a>
-
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
           </div>
         </div>
-
         <div class="about-video" data-aos="fade-left">
           <video autoplay muted loop playsinline>
-            <source src="./img/about-video1.mp4" type="video/mp4">
+            <source src="./img/video2.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -113,29 +114,8 @@ include 'header.php';
   </section>
 </section>
 
-
-</div>
-
 <!-- FOOTER -->
-<footer>
-  <p>&copy; 2025 Sweet Treats Bakery</p>
-</footer>
-<div class="product-list">
- <?php
-$result = $conn->query("SELECT name, description, price, image FROM menu_items ORDER BY date_added DESC LIMIT 9");
-while ($row = $result->fetch_assoc()):
-?>
-  <div class="product-card" data-aos="fade-up" onclick="openModal(`<?= addslashes($row['name']) ?>`, `<?= addslashes($row['description']) ?>`, `<?= addslashes($row['image']) ?>`)">
-    <h3><?= htmlspecialchars($row['name']) ?> – £<?= number_format($row['price'], 2) ?></h3>
-    <p><?= htmlspecialchars($row['description']) ?></p>
-    <?php if (!empty($row['image'])): ?>
-      <img src="<?= htmlspecialchars($row['image']) ?>" alt="<?= htmlspecialchars($row['name']) ?>">
-    <?php endif; ?>
-  </div>
-<?php endwhile; ?>
-
-</div>
-
+<?php include 'footer.php'; ?>
 <!-- JS Libraries -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
@@ -158,6 +138,43 @@ while ($row = $result->fetch_assoc()):
     },
   });
 </script>
+
+<!-- Modal Script -->
+<script>
+// Opening modal when clicking on a product card
+function openModal(title, description, image, recipeOrStory) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalDescription').textContent = description;
+  document.getElementById('modalImage').src = image;
+  document.getElementById('modalRecipeOrStory').textContent = recipeOrStory; // Afișează rețeta sau povestea
+  document.getElementById('productModal').style.display = 'block';
+}
+
+
+// Closing modal when clicking on the close button
+function closeModal() {
+  document.getElementById('productModal').style.display = 'none';
+}
+
+// Optional: Close modal when clicking outside of it
+window.onclick = function(event) {
+  const modal = document.getElementById('productModal');
+  if (event.target === modal) {
+    closeModal();
+  }
+}
+</script>
+
+<!-- Modal Window -->
+<div id="productModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h3 id="modalTitle"></h3>
+    <img id="modalImage" src="" alt="Product Image" style="max-width: 100%; margin-bottom: 15px;">
+    <p id="modalDescription"></p>
+    <p id="modalRecipeOrStory"></p>
+  </div>
+</div>
 
 </body>
 </html>
