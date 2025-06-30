@@ -7,7 +7,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <header>
   <div class="container">
-    <h1>Sweet Treats</h1>
+<img class="logo-header" src="./img/Logo.png" alt="logo" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;">
+
     <nav>
       <a href="index.php">Home</a>
       <a href="menu.php">Daily Menu</a>

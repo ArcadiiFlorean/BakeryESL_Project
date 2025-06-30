@@ -1,28 +1,31 @@
-/* === Feedback Page === */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f9f9f9;
 }
 
+/* === Feedback Form (feedback.php) === */
 .feedback-container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 30px;
+
+  max-width: 550px;
+  margin: 30px auto;
+  padding: 25px;
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .feedback-container h2 {
   text-align: center;
   color: #cc3366;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
 form label {
@@ -35,8 +38,8 @@ form input[type="email"],
 form textarea {
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+  border-radius: 5px;
+  font-size: 15px;
   resize: vertical;
   width: 100%;
   box-sizing: border-box;
@@ -46,11 +49,12 @@ form button {
   background-color: #cc3366;
   color: white;
   border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 15px;
+  border-radius: 5px;
   cursor: pointer;
   width: fit-content;
+  align-self: center;
 }
 
 form button:hover {
@@ -59,7 +63,93 @@ form button:hover {
 
 .success-message {
   color: green;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
   text-align: center;
+}
+
+/* === Swiper Slider (index.php) === */
+.feedback-swiper-section {
+  background: #fffefc;
+  padding: 20px 0;
+  margin-top: 30px;
+  text-align: center;
+  border-top: 2px solid #cc3366;
+}
+
+.feedback-swiper-section h2 {
+  color: #cc3366;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.swiper {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.feedback-slide {
+  background: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.feedback-text {
+  font-size: 14px;
+  font-style: italic;
+  color: #444;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.feedback-author {
+  font-size: 13px;
+  color: #cc3366;
+  font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+  background: #cc3366;
+  width: 6px;
+  height: 6px;
+  opacity: 0.5;
+  margin: 0 4px !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+/* === Admin Feedback View (view_feedback.php) === */
+ul {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 0 15px;
+  list-style-type: none;
+}
+
+ul li {
+  background: #fff;
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  line-height: 1.5;
+}
+
+ul li strong {
+  color: #338fcc;
+}
+.feedback-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
