@@ -17,6 +17,7 @@ body {
 h2 {
   color: #cc3366;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 /* === Form === */
@@ -25,14 +26,16 @@ form {
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 form input[type="text"] {
   padding: 8px;
-  width: 200px;
+  width: 220px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 16px;
 }
 
 form button {
@@ -41,11 +44,29 @@ form button {
   color: white;
   border: none;
   border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 form button:hover {
   background-color: #aa2955;
+}
+
+/* Clear button (as <a>) */
+.clear-button {
+  padding: 8px 14px;
+  background-color: #999;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.clear-button:hover {
+  background-color: #777;
 }
 
 /* === Menu Grid === */
@@ -62,7 +83,14 @@ form button:hover {
   padding: 16px;
   background-color: #fff;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .menu-item img {
@@ -71,14 +99,17 @@ form button:hover {
   object-fit: cover;
   border-radius: 6px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .menu-item h3 {
   margin: 10px 0 5px;
   color: #333;
+  font-size: 18px;
 }
 
 .menu-item p {
   color: #666;
   margin: 5px 0;
+  font-size: 15px;
 }

@@ -1,0 +1,153 @@
+/* Reset & font */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Container principal */
+.dashboard-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Titlu și subtitlu */
+.dashboard-container h2 {
+  color: #cc3366;
+  margin-bottom: 10px;
+  font-size: 28px;
+}
+
+.dashboard-container p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Linkuri de navigare */
+.dashboard-links {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.dashboard-links li {
+  margin-bottom: 12px;
+}
+
+.dashboard-links a {
+  text-decoration: none;
+  color: #cc3366;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.2s;
+}
+
+.dashboard-links a:hover {
+  color: #99004d;
+  text-decoration: underline;
+}
+
+/* Secțiune titlu tabel */
+.section-title {
+  margin-top: 40px;
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #333;
+}
+
+/* Wrapper scrollabil pentru tabel */
+.admin-table-wrapper {
+  overflow-x: auto;
+}
+
+/* Tabelul */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  background-color: #fff;
+}
+
+/* Celule tabel */
+.admin-table th,
+.admin-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  vertical-align: middle;
+  word-break: break-word;
+  max-width: 200px;
+}
+
+/* Head tabel */
+.admin-table th {
+  background-color: #f9f9f9;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Imagini din tabel */
+.admin-table img {
+  max-width: 80px;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Text fallback când nu există imagine */
+.no-image {
+  color: #888;
+  font-style: italic;
+}
+
+/* Nume produs + edit icon */
+.product-name-edit {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Buton Edit */
+.edit-btn {
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: inline-block;
+  transition: background-color 0.2s;
+  margin-right: 5px;
+}
+
+.edit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Buton Delete */
+.delete-btn {
+  text-decoration: none;
+  background-color: #dc3545;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  display: inline-block;
+  transition: background-color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: #a71d2a;
+}
+
+/* Fallback când nu există items */
+.no-items {
+  text-align: center;
+  color: #999;
+  padding: 20px;
+  font-style: italic;
+}

@@ -3,7 +3,8 @@
 /* header.css */
 
 header {
-  background: linear-gradient(to right, #f7e9d7, #a26769);
+  background: linear-gradient(to right, #080808, #d0d0d0);
+
   color: white;
   padding: 20px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -31,14 +32,28 @@ header h1 {
 }
 
 nav a {
-  color: rgb(162, 0, 255);
+  position: relative;
+  color: white;
   margin-left: 15px;
   text-decoration: none;
   font-weight: bold;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
 }
 
-nav a:hover {
-  text-decoration: underline;
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 header .container {
