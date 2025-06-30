@@ -1,0 +1,65 @@
+/* === Feedback Page === */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+}
+
+.feedback-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.feedback-container h2 {
+  text-align: center;
+  color: #cc3366;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form label {
+  font-weight: 600;
+  color: #333;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form button {
+  background-color: #cc3366;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+form button:hover {
+  background-color: #aa2955;
+}
+
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
